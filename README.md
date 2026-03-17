@@ -32,11 +32,13 @@
 - Vercel 대시보드에서 "Import Project" 선택
 - GitHub 저장소 선택: `johnkwon47/vibecoding_Project_001`
 
-### 2. 프로젝트 설정
-- **Framework Preset**: Next.js (자동 감지)
-- **Root Directory**: 자동 감지됨 (`vercel.json`에서 `tarot-app` 디렉토리 지정)
-- **Build Command**: `cd tarot-app && npm install && npm run build` (자동 적용)
-- **Output Directory**: `tarot-app/.next` (자동 적용)
+### 2. 프로젝트 설정 (중요!)
+- **Framework Preset**: Next.js 선택
+- **Root Directory**: `tarot-app` 입력 (필수!)
+  - 이 설정을 하지 않으면 "No Next.js version detected" 오류 발생
+- **Build Command**: 자동 적용 (`npm run build`)
+- **Output Directory**: 자동 적용 (`.next`)
+- **Install Command**: 자동 적용 (`npm install`)
 
 ### 3. 환경 변수 설정 (필수)
 Vercel 대시보드 > Settings > Environment Variables에서 아래 5개 변수를 추가하세요:

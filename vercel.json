@@ -1,13 +1,5 @@
 {
-  "version": 2,
-  "buildCommand": "cd tarot-app && npm install && npm run build",
-  "outputDirectory": "tarot-app/.next",
-  "installCommand": "cd tarot-app && npm install",
-  "framework": "nextjs",
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/tarot-app/$1"
-    }
-  ]
+  "buildCommand": "npm run build",
+  "installCommand": "npm install",
+  "outputDirectory": ".next"
 }
