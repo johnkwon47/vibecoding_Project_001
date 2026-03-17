@@ -26,6 +26,49 @@
 - 덱 데이터: `tarot_deck_78_ko.json`
   - 카드별 키워드/의미/상징(visual_motifs, color_symbols)을 포함하며 리딩 생성에 활용됩니다.
 
+## Deployment (Vercel)
+
+### 1. GitHub 연동
+- Vercel 대시보드에서 "Import Project" 선택
+- GitHub 저장소 선택: `johnkwon47/vibecoding_Project_001`
+
+### 2. 프로젝트 설정
+- **Framework Preset**: Next.js (자동 감지)
+- **Root Directory**: 자동 감지됨 (`vercel.json`에서 `tarot-app` 디렉토리 지정)
+- **Build Command**: `cd tarot-app && npm install && npm run build` (자동 적용)
+- **Output Directory**: `tarot-app/.next` (자동 적용)
+
+### 3. 환경 변수 설정 (필수)
+Vercel 대시보드 > Settings > Environment Variables에서 아래 5개 변수를 추가하세요:
+
+```
+AZURE_OPENAI_API_KEY=your-azure-openai-api-key
+AZURE_OPENAI_ENDPOINT=https://your-resource-name.cognitiveservices.azure.com/
+AZURE_OPENAI_MODEL_NAME=gpt-5-nano
+AZURE_OPENAI_DEPLOYMENT_NAME=gpt-5-nano-04
+AZURE_OPENAI_API_VERSION=2024-12-01-preview
+```
+
+> ⚠️ 환경 변수 추가 후 "Redeploy" 버튼을 눌러 재배포하세요.
+
+### 4. 배포 완료
+배포가 완료되면 Vercel이 제공하는 URL(예: `your-project.vercel.app`)에서 서비스를 이용할 수 있습니다.
+
+## Local Development
+
+### 환경 변수 설정
+1. `tarot-app/.env.example`을 복사하여 `tarot-app/.env.local` 생성
+2. Azure OpenAI 설정값을 입력
+
+### 개발 서버 실행
+```bash
+cd tarot-app
+npm install
+npm run dev
+```
+
+개발 서버가 `http://localhost:3000`에서 실행됩니다.
+
 ## Roadmap (Optional)
 
 - 카드 펼치기(팬 UI)에서 직접 선택하는 드로우 UX
