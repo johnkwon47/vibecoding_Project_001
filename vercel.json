@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "rootDirectory": "tarot-app",
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/next"
-    }
-  ]
+  "projectSettings": {
+    "nodeVersion": "20.x"
+  },
+  "buildCommand": "cd tarot-app && npm install && npm run build",
+  "installCommand": "npm install",
+  "outputDirectory": "tarot-app/.next",
+  "framework": "nextjs"
 }
 
