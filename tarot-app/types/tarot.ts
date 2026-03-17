@@ -19,6 +19,26 @@ export interface TarotCard {
   visual_motifs: string[];
   color_symbols: string[];
   image_asset: string;
+  // Extended fields
+  domain_hooks?: {
+    love?: { upright: string; reversed: string };
+    career?: { upright: string; reversed: string };
+    money?: { upright: string; reversed: string };
+    relationship?: { upright: string; reversed: string };
+    self?: { upright: string; reversed: string };
+  };
+  actions?: {
+    upright: string[];
+    reversed: string[];
+  };
+  pitfalls?: {
+    upright: string[];
+    reversed: string[];
+  };
+  reflection_questions?: {
+    upright: string[];
+    reversed: string[];
+  };
 }
 
 // ─── 스프레드 포지션 ────────────────────────────────────────────────────────

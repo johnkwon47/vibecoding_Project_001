@@ -1,5 +1,5 @@
 import type { TarotCard } from "@/types/tarot";
-import rawDeck from "@/src/data/tarot_deck_78_ko.json";
+import rawDeck from "@/src/data/tarot_deck_78_ko_extended.json";
 
 // 빌드 타임 / 런타임 모두 안전하게 import
 const deckData = rawDeck as TarotCard[];
