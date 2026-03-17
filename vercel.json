@@ -1,15 +1,10 @@
 {
   "version": 2,
+  "rootDirectory": "tarot-app",
   "builds": [
     {
-      "src": "tarot-app/package.json",
+      "src": "package.json",
       "use": "@vercel/next"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "tarot-app/$1"
     }
   ]
 }
