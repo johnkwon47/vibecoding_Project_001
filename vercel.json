@@ -1,0 +1,17 @@
+{
+  "buildCommand": "cd tarot-app && npm run build",
+  "installCommand": "cd tarot-app && npm install",
+  "devCommand": "cd tarot-app && npm run dev",
+  "builds": [
+    {
+      "src": "tarot-app/next.config.ts",
+      "use": "@vercel/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "tarot-app/$1"
+    }
+  ]
+}
