@@ -28,15 +28,15 @@ function getContextualImageNote(analysis: QuestionAnalysis, upright: boolean): s
   const domain = analysis.domain;
   
   if (domain === "love" && upright) {
-    return "이러한 시각적 요소들은 관계에서의 현재 에너지 흐름을 상징적으로 보여줍니다.";
+    return "이 시각적 상징들은 관계 역동에서 현재 작동하고 있는 심리적 에너지 흐름을 구체적으로 나타냅니다.";
   } else if (domain === "career" && upright) {
-    return "이 이미지는 당신의 직업적 상황에서 주목해야 할 핵심 요소를 시각화하고 있습니다.";
+    return "이 이미지는 귀하의 직업 상황에서 전문적으로 주목해야 할 핵심 요소를 상징적으로 제시하고 있습니다.";
   } else if (domain === "decision" && upright) {
-    return "화면 속 상징들은 선택의 기로에서 고려해야 할 중요한 차원들을 드러냅니다.";
+    return "이미지 속 상징들은 의사결정 과정에서 체계적으로 검토해야 할 심층적 차원들을 드러냅니다.";
   } else if (!upright && analysis.emotionalTone === "anxious") {
-    return "역방향의 이미지는 당신의 불안이 가리키는 숨겨진 진실을 보여주고 있을 수 있습니다.";
+    return "역방향으로 나타난 이 이미지는 현재의 불안 이면에 놓인 무의식적 패턴을 시사합니다.";
   } else if (!upright) {
-    return "뒤집힌 이미지는 아직 표면화되지 않은 내면의 흐름을 암시합니다.";
+    return "역방향 이미지는 아직 의식화되지 않은 내면의 심리적 과정이 진행 중임을 나타냅니다.";
   }
   
   return "";
@@ -72,41 +72,41 @@ function getContextualKeywordInterpretation(
   // 질문 유형별 키워드 적용
   if (type === "yes-no") {
     return card.upright
-      ? `"${question}"에 대해 **${primaryKeyword}**의 에너지가 긍정적인 가능성을 지지하고 있습니다.`
-      : `"${question}"에 대해 **${primaryKeyword}**의 측면이 아직 조정이 필요한 상태입니다.`;
+      ? `"${question}"에 대해 **${primaryKeyword}**의 에너지가 실현 가능성을 지지하는 방향으로 작용하고 있습니다.`
+      : `"${question}"에 대해 **${primaryKeyword}** 측면의 내적 조정이 선행될 필요가 있는 상태입니다.`;
   } else if (type === "how") {
-    return `당신이 찾는 방법의 핵심은 **${primaryKeyword}**의 원리를 적용하는 것입니다.`;
+    return `귀하가 모색하는 방법의 핵심은 **${primaryKeyword}**의 원리를 체계적으로 적용하는 데 있습니다.`;
   } else if (type === "choice") {
-    return `선택의 순간에서 **${primaryKeyword}**가 어느 길이 더 당신의 본질과 가까운지 가리키고 있습니다.`;
+    return `선택의 기로에서 **${primaryKeyword}**는 어느 방향이 귀하의 본질적 가치관과 더 일치하는지를 가리킵니다.`;
   } else if (type === "timing") {
     return card.upright
-      ? `**${primaryKeyword}**의 에너지가 활성화될 때가 적절한 시기일 것입니다.`
-      : `**${primaryKeyword}**가 온전히 발현되기까지는 still 더 조율이 필요한 시기입니다.`;
+      ? `**${primaryKeyword}**의 에너지가 충분히 성숙될 때가 적절한 시기가 될 것으로 분석됩니다.`
+      : `**${primaryKeyword}**가 온전히 발현되기까지는 추가적인 조율과 준비가 필요한 시기입니다.`;
   }
   
   // 영역별 키워드 적용
   if (domain === "love") {
-    return `관계에서 **${primaryKeyword}**는 지금 당신이 주목해야 할 핵심 요소입니다.`;
+    return `관계 역동 속에서 **${primaryKeyword}**는 현재 가장 중점적으로 다루어야 할 심리적 핵심 요소입니다.`;
   } else if (domain === "career") {
-    return `직업적 상황에서 **${primaryKeyword}**가 현재 흐름을 이해하는 열쇠입니다.`;
+    return `직업적 맥락에서 **${primaryKeyword}**가 현재 상황의 흐름을 이해하는 핵심 열쇠입니다.`;
   } else if (domain === "self-growth") {
-    return `성장의 여정에서 **${primaryKeyword}**가 당신이 통과하고 있는 단계를 보여줍니다.`;
+    return `심리적 성장의 관점에서 **${primaryKeyword}**는 귀하가 현재 통과하고 있는 발달 단계를 나타냅니다.`;
   }
   
-  return `현재 상황에서 **${primaryKeyword}**가 중심 주제로 떠오릅니다.`;
+  return `현재 상황에서 **${primaryKeyword}**가 핵심 주제로 부상하고 있습니다.`;
 }
 
 // ─── 포지션별 통합 리딩 ────────────────────────────────────────────────────
 
 function buildPositionIntegration(card: CardViewModel, question: string, analysis: QuestionAnalysis): string {
   const tone = card.upright
-    ? "이 에너지를 수용하고 적극적으로 활용할 때"
-    : "이 에너지의 뒤집힌 측면을 인식하고 조정할 때";
+    ? "이 에너지를 내면화하고 전략적으로 활용하실 때"
+    : "이 에너지의 역전된 측면을 심층적으로 인식하고 체계적으로 조정하실 때";
   
   // 질문 유형에 맞는 실천 제안
   const actionGuidance = getPositionActionGuidance(card, analysis);
   
-  return `**${card.positionNameKo}** 자리에서, ${tone} "${question}"의 흐름에 중요한 전환점이 될 수 있습니다. ${actionGuidance}`;
+  return `**${card.positionNameKo}** 포지션에서, ${tone} "${question}"의 흐름에 있어 의미 있는 전환점이 마련될 수 있습니다. ${actionGuidance}`;
 }
 
 /**
@@ -117,20 +117,20 @@ function getPositionActionGuidance(card: CardViewModel, analysis: QuestionAnalys
   const type = analysis.type;
   
   if (type === "how" && card.upright) {
-    return `구체적으로는 **${keyword}**의 태도로 오늘 한 가지 작은 행동을 시작해 보세요.`;
+    return `구체적 실천 측면에서, **${keyword}**의 원리를 바탕으로 실현 가능한 첫 번째 단계를 설정하시길 권합니다.`;
   } else if (type === "yes-no") {
     return card.upright
-      ? `이 에너지를 강화하기 위해 **${keyword}**와 관련된 행동을 의식적으로 실천해 보세요.`
-      : `**${keyword}**의 블록을 인식하고, 왜 그것이 나타났는지 스스로에게 물어보세요.`;
+      ? `이 에너지를 강화하기 위해 **${keyword}**와 관련된 행동을 의도적이고 지속적으로 실천하시는 것이 도움이 됩니다.`
+      : `**${keyword}**의 심리적 블록을 인식하고, 그 기저에 있는 원인을 객관적으로 탐색해 보시길 권합니다.`;
   } else if (type === "choice") {
-    return `**${keyword}**는 당신의 선택이 어느 방향으로 흘러가야 하는지 암시하는 신호입니다.`;
+    return `**${keyword}**는 어느 선택 방향이 귀하의 심층적 가치관과 더 부합하는지를 가리키는 중요한 지표입니다.`;
   } else if (analysis.emotionalTone === "anxious") {
-    return `불안한 마음에 **${keyword}**가 어떤 안정감을 줄 수 있을지 탐색해 보세요.`;
+    return `현재의 불안 감정 속에서 **${keyword}**가 제공할 수 있는 심리적 안정감의 근거를 탐색하시길 권합니다.`;
   } else if (analysis.emotionalTone === "frustrated") {
-    return `답답함의 돌파구로 **${keyword}**가 새로운 관점을 제시하고 있습니다.`;
+    return `현재의 막막함을 타개하는 돌파구로서 **${keyword}**가 새로운 관점의 전환을 제시하고 있습니다.`;
   }
   
-  return `**${keyword}**를 통해 다음 단계로 나아갈 수 있습니다.`;
+  return `**${keyword}**의 심층적 의미를 통해 다음 단계로의 발전적 이행이 가능합니다.`;
 }
 
 // ─── 전체 스토리 통합 ──────────────────────────────────────────────────────
@@ -172,16 +172,16 @@ function buildOverallStory(cards: CardViewModel[], question: string, analysis: Q
  */
 function getTrendAnalysis(upright: number, reversed: number, analysis: QuestionAnalysis): string {
   const base = upright > reversed
-    ? "전반적으로 흐름이 열려 있으며 변화를 주도할 수 있는 가능성이 높은 시기입니다."
+    ? "전반적인 에너지 흐름이 개방되어 있으며, 변화를 주도적으로 이끌어 나갈 수 있는 가능성이 높은 시기로 분석됩니다."
     : upright === reversed
-      ? "내부와 외부의 긴장이 공존하며, 균형을 찾는 것이 지금 가장 중요한 핵심입니다."
-      : "내면의 저항이나 외부 장애가 감지되므로, 방향을 재조정해야 할 시기일 수 있습니다.";
+      ? "내외부의 긴장이 상호 공존하며, 심리적 균형의 회복이 현재 가장 중요한 과제로 나타납니다."
+      : "내면의 심리적 저항이나 외부 환경적 장애가 감지되므로, 전략적 방향 재조정이 필요한 시기로 보입니다.";
   
   // 질문 유형에 따른 뉘앙스 추가
   if (analysis.type === "yes-no" && upright > reversed) {
-    return base + " 가능성은 당신의 적극적 참여에 달려 있습니다.";
+    return base + " 실현 가능성은 궁극적으로 귀하의 능동적 참여와 헌신에 달려 있습니다.";
   } else if (analysis.type === "how" && reversed > upright) {
-    return base + " 방법을 찾기 전에 먼저 내면의 블록을 확인하는 것이 우선일 수 있습니다.";
+    return base + " 방법론을 모색하기에 앞서, 내면의 심리적 블록을 먼저 확인하는 것이 선행되어야 합니다.";
   }
   
   return base;
@@ -329,7 +329,7 @@ function buildActions(cards: CardViewModel[], analysis: QuestionAnalysis): strin
   if (reversedCards.length > 0) {
     const first = reversedCards[0];
     actions.push(
-      `"${first.keywords[0]}"이(가) 드러나는 패턴을 일주일간 관찰하고 일기에 기록해 보세요.`
+      `"${first.keywords[0]}"으로 드러나는 내면적 패턴을 1주일 간 관찰하시고 상담 노트에 기록하시길 권합니다.`
     );
   }
 
@@ -347,16 +347,16 @@ function buildActions(cards: CardViewModel[], analysis: QuestionAnalysis): strin
  */
 function getActionPhrase(keyword: string, analysis: QuestionAnalysis): string {
   if (analysis.domain === "love") {
-    return `"${keyword}"의 에너지를 관계에서 표현하기 위해 오늘 한 가지 소통 행동을 시도해 보세요.`;
+    return `"${keyword}"의 에너지를 관계에서 구체적으로 표현하기 위해 오늘 한 가지 진정성 있는 소통을 실천하시길 권합니다.`;
   } else if (analysis.domain === "career") {
-    return `"${keyword}"의 원리를 직장이나 프로젝트에서 구체적으로 적용할 방법을 하나 실천해 보세요.`;
+    return `"${keyword}"의 원리를 직무 환경에서 실질적으로 적용할 수 있는 구체적인 감도를 하나 설정하시길 권합니다.`;
   } else if (analysis.domain === "self-growth") {
-    return `"${keyword}"의 에너지를 체화하기 위해 오늘 하루 의식적으로 그 태도를 연습해 보세요.`;
+    return `"${keyword}"의 에너지를 체화하기 위해 오늘 하루 의도적으로 그 태도를 연습하실 것을 권합니다.`;
   } else if (analysis.domain === "decision") {
-    return `"${keyword}"를 결정의 기준으로 삼아, 각 선택지를 이 렌즈로 재평가해 보세요.`;
+    return `"${keyword}"를 의사결정의 평가 기준으로 삼고, 각 선택지를 이 렌즈로 다시 검토하시길 권합니다.`;
   }
   
-  return `"${keyword}"의 에너지를 오늘 하루 한 가지 구체적인 행동으로 표현해 보세요.`;
+  return `"${keyword}"의 에너지를 오늘 하루 구체적인 행동으로 표현하시길 권합니다.`;
 }
 
 /**
@@ -364,15 +364,15 @@ function getActionPhrase(keyword: string, analysis: QuestionAnalysis): string {
  */
 function getTypeSpecificAction(analysis: QuestionAnalysis, cards: CardViewModel[]): string | null {
   if (analysis.type === "how") {
-    return "첫 번째 카드가 제시한 방법을 오늘부터 3일간 작은 실험으로 시도해 보세요.";
+    return "첫 번째 카드가 제시한 접근 방법을 이번 주 3일간 소규모 실험으로 적용해 보시고, 거기에서 얻은 쿠를 상담 노트에 기록하시길 권합니다.";
   } else if (analysis.type === "choice") {
-    return "각 선택지를 택했을 때의 하루를 상상하며 일기를 써보세요. 어느 쪽이 더 진정성 있게 느껴지나요?";
+    return "각 선택지를 택했을 때의 하루를 마음속으로 구체적으로 구성해 보시고, 어느 시나리오에서 구체적 행동이 더 자연스럽게 느껴지는지 살펴보십시오.";
   } else if (analysis.type === "timing") {
-    return "지금 당장 할 수 있는 작은 준비 단계를 하나 실행하고, 때가 무르익는 신호들을 관찰하세요.";
+    return "지금 당장 실출할 수 있는 소규모 준비 단계를 하나 실행하시고, 상황 도래의 신호들을 전문가 시각으로 관찰하십시오.";
   } else if (analysis.emotionalTone === "anxious") {
-    return "불안을 줄이기 위해 당신이 통제할 수 있는 한 가지 요소에 집중하여 행동하세요.";
+    return "현재 불안을 완화하기 위해 실질적으로 통제 가능한 요소 한 가지밖에 모든 에너지를 집중시켜 행동하십시오.";
   } else if (cards.length >= 3) {
-    return "신뢰하는 사람과 이 질문에 대해 솔직하게 대화하는 시간을 가져보세요.";
+    return "신뢰할 수 있는 주변인과 이 질문에 대해 짇징칵없는 대화를 나누어 보시기를 권합니다.";
   }
   
   return null;
@@ -382,7 +382,7 @@ function getTypeSpecificAction(analysis: QuestionAnalysis, cards: CardViewModel[
 
 function buildPitfalls(cards: CardViewModel[], analysis: QuestionAnalysis): string[] {
   const pitfalls: string[] = [
-    "타로 리딩을 유일한 판단 근거로 삼기보다, 내면의 직관과 현실적 데이터를 함께 고려하세요.",
+    "타로 리딩은 자기 성찰과 내면 탐색을 위한 도구입니다. 중요한 의사결정은 수치적 구체성과 전문 상담을 병행하시길 권합니다.",
   ];
 
   const reversedCount = cards.filter((c) => !c.upright).length;
@@ -398,18 +398,18 @@ function buildPitfalls(cards: CardViewModel[], analysis: QuestionAnalysis): stri
     );
   } else if (reversedCount >= Math.ceil(cards.length / 2)) {
     pitfalls.push(
-      "역방향 카드가 많습니다. 현재 내부 저항 또는 외부 막힘이 과장되어 보일 수 있으니, 단정하지 말고 관찰자의 시각을 유지하세요."
+      "역방향 카드가 많습니다. 현재 내면의 심리적 저항이 과장되어 인식될 수 있으니, 단정적 해석보다 관찰자의 시각을 유지하시길 권합니다."
     );
   } else {
     pitfalls.push(
-      "결과가 긍정적으로 보이더라도, 행동하지 않으면 가능성은 현실이 되지 않습니다. 리딩을 시작점으로만 활용하세요."
+      "흐름이 긍정적으로 나타나더라도, 이는 시작점일 뿐입니다. 실질적인 행동 없이는 가능성이 현실화되지 않습니다."
     );
   }
   
   // 감정 톤별 주의사항
   if (analysis.emotionalTone === "anxious") {
     pitfalls.push(
-      "불안한 상태에서는 카드를 부정적으로 해석하기 쉽습니다. 며칠 후 다시 읽어보며 균형 잡힌 시각을 유지하세요."
+      "현재의 불안 상태에서는 카드를 부정적으로 해석하는 경향이 있을 수 있습니다. 수일 후 안정된 상태에서 다시 검토하실 것을 권합니다."
     );
   }
 
@@ -424,37 +424,37 @@ function buildJournalQuestions(question: string, cards: CardViewModel[], analysi
   
   // 첫 번째 질문: 카드 기반
   questions.push(
-    `"${firstCard.displayName}"이(가) 지금 나에게 전하는 가장 솔직한 메시지는 무엇인가?`
+    `"${firstCard.displayName}"이(가) 현재 저에게 전하는 가장 핵심적인 통찰은 무엇입니까?`
   );
   
   // 두 번째 질문: 질문 유형 기반
   if (analysis.type === "yes-no") {
     questions.push(
-      `"${question}"가 이루어지는 것을 나는 정말로 원하는가? 그 뒤에 숨은 진짜 욕구는 무엇인가?`
+      `"${question}"가 실현된다면, 그것이 충족해 주는 더 깊은 심리적 욕구는 무엇입니까?`
     );
   } else if (analysis.type === "choice") {
     questions.push(
-      `각 선택지에서 내가 가장 두려워하는 것과 가장 기대하는 것은 무엇인가?`
+      `각 선택지에서 제가 가장 두려워하는 것과 가장 기대하는 것은 각각 무엇입니까?`
     );
   } else if (analysis.type === "how") {
     questions.push(
-      `이 방법을 실천하지 못하게 막는 진짜 장애물은 외부에 있나, 내면에 있나?`
+      `이 방법의 실천을 가로막는 장애물은 외부 환경에 있습니까, 아니면 내면의 심리적 저항에 있습니까?`
     );
   } else if (analysis.type === "timing") {
     questions.push(
-      `"지금은 때가 아니다"라는 생각이 지혜인가, 아니면 두려움의 핑계인가?`
+      `"지금은 때가 아니다"는 판단이 성숙한 지혜에서 비롯된 것입니까, 아니면 변화에 대한 두려움에서 비롯된 것입니까?`
     );
   } else if (analysis.emotionalTone === "anxious") {
     questions.push(
-      `이 불안의 근원은 무엇이며, 내가 통제할 수 있는 것과 없는 것을 어떻게 구분할 수 있을까?`
+      `현재 불안의 근원은 무엇이며, 제가 실질적으로 통제 가능한 영역과 그렇지 않은 영역을 어떻게 구분할 수 있습니까?`
     );
   } else if (analysis.emotionalTone === "confused") {
     questions.push(
-      `혼란을 걷어내고 나면, 내 직관은 어느 방향을 가리키고 있는가?`
+      `혼란을 걷어낸 상태에서 바라본다면, 저의 내면이 가리키는 방향은 어디입니까?`
     );
   } else {
     questions.push(
-      `"${question}"에 대한 나의 두려움과 진정한 희망은 각각 무엇인가?`
+      `"${question}"에 대한 저의 두려움과 진정한 바람은 각각 무엇이며, 두 감정이 공존하는 이유는 무엇입니까?`
     );
   }
   
