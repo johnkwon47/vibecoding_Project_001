@@ -8,6 +8,7 @@ import { buildCardViewModels } from "@/lib/draw";
 import ThreeCardSpread from "@/components/ThreeCardSpread";
 import CelticCrossSpread from "@/components/CelticCrossSpread";
 import ReadingViewer from "@/components/ReadingViewer";
+import DownloadReadingButton from "@/components/DownloadReadingButton";
 
 /** /api/read 호출 → 실패 시 템플릿 폴백 */
 async function fetchReading(drawResult: DrawResult): Promise<ReadingOutput> {
@@ -295,6 +296,13 @@ export default function ReadingPage() {
               >
                 {copied ? "✓ 복사됨" : "📋 마크다운 복사"}
               </button>
+
+              <DownloadReadingButton
+                cards={cardVMs}
+                reading={reading}
+                question={drawResult.question}
+                spreadName={spreadName}
+              />
 
               <button
                 onClick={() => router.push("/")}
