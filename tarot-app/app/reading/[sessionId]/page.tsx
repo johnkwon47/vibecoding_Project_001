@@ -9,7 +9,6 @@ import ThreeCardSpread from "@/components/ThreeCardSpread";
 import CelticCrossSpread from "@/components/CelticCrossSpread";
 import ReadingViewer from "@/components/ReadingViewer";
 import DownloadReadingButton from "@/components/DownloadReadingButton";
-import TarotChatBot from "@/components/TarotChatBot";
 
 /** /api/read 호출 → 실패 시 템플릿 폴백 */
 async function fetchReading(drawResult: DrawResult): Promise<ReadingOutput> {
@@ -322,14 +321,6 @@ export default function ReadingPage() {
 
             {/* 리딩 결과 */}
             <ReadingViewer reading={reading} />
-
-            {/* AI 상담 챗봇 */}
-            <TarotChatBot
-              cards={cardVMs}
-              reading={reading}
-              question={drawResult.question}
-              spreadType={drawResult.spreadType}
-            />
           </div>
         </div>
       ) : (
