@@ -40,32 +40,37 @@ export default function DownloadReadingButton({
     try {
       const html2canvas = (await import("html2canvas")).default;
 
-      /* 캡처 직전 잠깐 visible 처리 (렌더링 완료 보장) */
       const el = captureRef.current;
-      el.style.left = "0px";
-      el.style.top = "0px";
-      el.style.position = "fixed";
-      el.style.zIndex = "9999";
-      el.style.visibility = "visible";
 
-      /* 이미지가 모두 로드될 때까지 대기 */
-      const imgs = el.querySelectorAll<HTMLImageElement>("img");
-      await Promise.allSettled(
-        Array.from(imgs).map(
-          (img) =>
-            new Promise<void>((resolve) => {
-              if (img.complete) return resolve();
-              img.onload = () => resolve();
-              img.onerror = () => resolve();
-            })
-        )
-      );
+      /* opacity:0 → 1 로 전환 (visibility:hidden은 이미지 로드 자체를 막음) */
+      el.style.opacity = "1";
+
+      /* 이미지가 모두 로드될 때까지 대기
+         - img.complete && naturalWidth > 0 이어야 실제 로드 성공 */
+      const waitForImages = () => {
+        const imgs = el.querySelectorAll<HTMLImageElement>("img");
+        return Promise.allSettled(
+          Array.from(imgs).map(
+            (img) =>
+              new Promise<void>((resolve) => {
+                if (img.complete && img.naturalWidth > 0) return resolve();
+                img.onload = () => resolve();
+                img.onerror = () => resolve(); // 실패해도 진행
+              })
+          )
+        );
+      };
+
+      await waitForImages();
+      /* 브라우저 렌더링 사이클 한 바퀴 + 추가 여유 */
+      await new Promise((r) => requestAnimationFrame(r));
+      await new Promise((r) => setTimeout(r, 200));
 
       const canvas = await html2canvas(el, {
         backgroundColor: "#0d0b1a",
         scale: 2,
         useCORS: true,
-        allowTaint: true,
+        allowTaint: false, // useCORS와 동시에 쓰면 충돌
         logging: false,
         width: el.scrollWidth,
         height: el.scrollHeight,
@@ -74,10 +79,7 @@ export default function DownloadReadingButton({
       });
 
       /* 다시 숨김 */
-      el.style.position = "fixed";
-      el.style.left = "-9999px";
-      el.style.top = "-9999px";
-      el.style.visibility = "hidden";
+      el.style.opacity = "0";
 
       const url = canvas.toDataURL("image/png");
       const link = document.createElement("a");
@@ -106,14 +108,16 @@ export default function DownloadReadingButton({
         {downloading ? "⏳ 저장 중..." : "🖼️ 이미지 저장"}
       </button>
 
-      {/* ── 캡처 타겟 (화면 밖) ── */}
+      {/* ── 캡처 타겟 (화면 밖, opacity:0으로 숨김) */}
+      {/* visibility:hidden 은 이미지 로드 자체를 막으므로 사용 금지 */}
       <div
         ref={captureRef}
         style={{
           position: "fixed",
           left: "-9999px",
           top: "-9999px",
-          visibility: "hidden",
+          opacity: "0",           // ← visibility:hidden 대신 opacity:0 사용
+          pointerEvents: "none",  // 클릭 방지
           width: "820px",
           backgroundColor: "#0d0b1a",
           padding: "48px 40px",
@@ -193,6 +197,8 @@ export default function DownloadReadingButton({
                   <img
                     src={candidates[0]}
                     alt={card.displayName}
+                    data-candidates={JSON.stringify(candidates)}
+                    data-idx="0"
                     style={{
                       width: "100%",
                       height: "100%",
@@ -200,6 +206,18 @@ export default function DownloadReadingButton({
                       transform: card.upright ? "none" : "rotate(180deg)",
                     }}
                     crossOrigin="anonymous"
+                    onError={(e) => {
+                      /* candidates 순서대로 fallback 시도 */
+                      const el = e.currentTarget;
+                      const idx = Number(el.dataset.idx ?? 0) + 1;
+                      const list = JSON.parse(
+                        el.dataset.candidates ?? "[]"
+                      ) as string[];
+                      if (idx < list.length) {
+                        el.dataset.idx = String(idx);
+                        el.src = list[idx];
+                      }
+                    }}
                   />
                 </div>
                 <div
